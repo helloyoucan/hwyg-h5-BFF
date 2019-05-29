@@ -1,22 +1,15 @@
 import { graphql } from "graphql";
-
 const Koa = require('koa');
 const Router = require('koa-router');
 const app = new Koa();
 const router = new Router();
-const bodyParser = require('koa-bodyparser');
+const bodyParser = require('./bodyparser')
 import schema from './schema'
-
 const PORT = 3000
 //Parse post content as text(将post内容解析为文本)
-// app.use(bodyParser.text({type:'application/graphql'}));
-app.use(bodyParser());
-// app.use(bodyParser({
-//     extendTypes: {
-//       text: ['application/graphql'] // will parse application/x-javascript type body as a JSON string
-//     }
-//   }));
-
+app.use(bodyParser({
+    enableTypes: ['json','form','text']
+  }));
 router.post('/graphql',async (ctx:any)=>{
     console.log(ctx.request.body)
     //GraphQL executor(GraphQL执行人)
@@ -33,6 +26,5 @@ router.get('/', async (ctx: any) => {
 app.use(router.routes());
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server ready at http://localhost:${PORT}/graphql`);
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}/graphql`);
 });
