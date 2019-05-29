@@ -6,18 +6,33 @@ import {
 //编写 GraphQL Schema
 let count = 0;
 let schema = new GraphQLSchema({
-    query:new GraphQLObjectType({
-        name:'RootQueryType',
-        fields:{
+    query: new GraphQLObjectType({
+        name: 'RootQueryType',
+        fields: {
             count: {
-                type:GraphQLInt,
-                resolve(){
+                type: GraphQLInt,
+                //Add description
+                description: 'The count!',
+                resolve() {
+                    return count;
+                }
+            }
+        }
+    }),
+    mutation: new GraphQLObjectType({
+        name: 'RootMutationType',
+        fields: {
+            updateCount: {
+                type: GraphQLInt,
+                description: 'Update the count',
+                resolve: function () {
+                    count += 1;
                     return count;
                 }
             }
         }
     })
-}) 
+})
 export default schema;
 /**
  * 这段代码创建了GraphQLSchema实例。
