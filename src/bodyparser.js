@@ -70,7 +70,7 @@ module.exports = function (opts) {
     try {
       const res = await parseBody(ctx);
       // ctx.request.body = res//++++++
-      ctx.request.body = 'parsed' in res ? res.parsed : res; //----------
+      ctx.request.body = typeof res==='object'&&'parsed' in res ? res.parsed : res; //----------
       if (ctx.request.rawBody === undefined) ctx.request.rawBody = res.raw;
     } catch (err) {
       if (onerror) {
