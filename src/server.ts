@@ -6,6 +6,7 @@ const router = new Router();
 const bodyParser = require('./bodyparser')
 import schema from './schema'
 import goodsSchema from './goodsSchema'
+import {getBrannerList} from './service/brannersService'
 const PORT = 3000
 //Parse post content as text(将post内容解析为文本)
 app.use(bodyParser({
@@ -33,8 +34,10 @@ router.post('/graphql',async (ctx:any)=>{
 })
 
 
-router.get('/', async (ctx: any) => {
-    ctx.body = 'Hello World!';
+router.get('/api', async (ctx: any) => {
+    const data = (await getBrannerList())()
+    // console.log(data)
+    ctx.body = data;
 });
 app.use(router.routes());
 
