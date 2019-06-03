@@ -1,6 +1,41 @@
 import {
     GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLInt,
 } from 'graphql'
+const BrannerItem = new GraphQLObjectType({
+    name: 'item',
+    fields: {
+        id: {
+            type: GraphQLString
+        },
+        brannerName: {
+            type: GraphQLString
+        },
+        effectTime: {
+            type: GraphQLInt
+        },
+        expireTime: {
+            type: GraphQLInt
+        },
+        createTime: {
+            type: GraphQLInt
+        },
+        imgUrl: {
+            type: GraphQLString
+        },
+        jumpMode: {
+            type: GraphQLInt
+        },
+        url: {
+            type: GraphQLString
+        },
+        isEffect: {
+            type: GraphQLInt
+        },
+        creator: {
+            type: GraphQLString
+        }
+    }
+})
 const ItemType = new GraphQLObjectType({
     name: 'item',
     fields: {
@@ -38,7 +73,7 @@ const ItemSchema = new GraphQLSchema({
                         type: GraphQLInt,
                         required: true  //itemId required for query
                     },
-                    aa:{
+                    aa: {
                         type: GraphQLInt
                     }
                 },
@@ -46,17 +81,17 @@ const ItemSchema = new GraphQLSchema({
                     console.log(params)
                     // return ItemService(obj['id'])
                     return {
-                        id:params.id,
-                        title:'I am title',
-                        price:'999.9',
-                        pic:'I am pic'
+                        id: params.id,
+                        title: 'I am title',
+                        price: '999.9',
+                        pic: 'I am pic'
                     }
                 }
             }
         }
     })
 })
-function ItemService(id:string) {
+function ItemService(id: string) {
     return id
 }
 export default ItemSchema
