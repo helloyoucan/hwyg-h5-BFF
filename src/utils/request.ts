@@ -8,7 +8,7 @@ interface RequestParams {
     data?: object | number | string
 }
 interface ReauestFunc {
-    (opt: RequestParams): Promise<Function>;
+    (opt: RequestParams): any;
 }
 interface Data {
     code: string | number,
@@ -42,15 +42,16 @@ const request: ReauestFunc = function ({ method = 'GET', url, headers, data }: R
                     console.log('请求错误' + e)
                 });
                 res.on('end', () => {
-                    const json:Data = JSON.parse(body)
-                    resolve(()=>json)
-                    // console.log(body)
+                    const json: Data = JSON.parse(body)
+                    resolve(() => json)
                     console.log('响应中已无数据')
                 });
             }
         )
         // req.write(contents);
         req.end();
+    }).then((func:Function) => {
+        return func()
     })
 
 }
