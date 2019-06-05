@@ -1,15 +1,13 @@
 const Router = require('koa-router')
 const router = new Router()
-import * as BrannersServise from '../../service/brannersService'
+import DataSchema from '../../schema/branners'
+import { graphql } from 'graphql';
 
 
 const ROOT_PATH = 'branners'
-router.get('/',  (ctx: any) => {
-  return BrannersServise
-    .getBrannerList()
-    .then((res: any) => {
-      ctx.body = res
-    })
+router.post('/',  async(ctx: any) => {
+  const data = await graphql(DataSchema, ctx.request.body)
+  ctx.body = data
 })
 
 
