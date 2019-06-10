@@ -2,7 +2,7 @@ import {
     GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLInt, GraphQLList,
 } from 'graphql'
 import { getTradedList } from '@/service/OrderService'
-import {getGraphQLObjectTypePageList} from '@/utils/index'
+import { getGraphQLObjectTypePageList } from '@/utils/index'
 const Item = new GraphQLObjectType({
     name: 'item',
     fields: {
@@ -53,35 +53,41 @@ const Item = new GraphQLObjectType({
 interface Res {
     code: string,
     message: string,
-    data: Array<object>
+    data: {
+        content: Array<object>,
+        page: number,
+        totalElements: number,
+        totalPages: number,
+        size: number,
+        numberOfElements: number
+    }
 }
 const queryType = new GraphQLObjectType({
-        name: "ListQuery",
-        description: 'query list',
-         fields: {
-            data: {
-                type: getGraphQLObjectTypePageList(Item),
-                description: 'data',
-                resolve(root, params, ctx) {
-                    return getTradedList()
-                        .then((res: Res) => {
-                            console.log(res)
-                            const {code,message,data:{content,page,totalElements,totalPages,size,numberOfElements}} = this.res
-                            return {
-                                code,
-                                message,
-                                pager:{
-                                    page,totalElements,totalPages,size,numberOfElements
-                                },
-                                list: content
-                            }
-                        })
-                }
+    name: "ListQuery",
+    description: 'query list',
+    fields: {
+        data: {
+            type: getGraphQLObjectTypePageList(Item),
+            description: 'data',
+            resolve(root, params, ctx) {
+                return getTradedList()
+                    .then((res: Res) => {
+                        const { code, message, data: { content, page, totalElements, totalPages, size, numberOfElements } } = res
+                        return {
+                            code,
+                            message,
+                            pager: {
+                                page, totalElements, totalPages, size, numberOfElements
+                            },
+                            list: content
+                        }
+                    })
             }
         }
+    }
 })
 export default {
-    tradedList:new GraphQLSchema({
+    tradedList: new GraphQLSchema({
         query: queryType
-      })
+    })
 }
