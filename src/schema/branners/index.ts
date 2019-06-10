@@ -1,7 +1,7 @@
 import {
     GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLInt, GraphQLList,
 } from 'graphql'
-import { getBrannerList } from '../../service/BrannersService'
+import { getBrannerList } from '@/service/BrannersService'
 const BrannerItem = new GraphQLObjectType({
     name: 'item',
     fields: {
@@ -77,56 +77,46 @@ const BrannerItem = new GraphQLObjectType({
         }
     }
 })
-const BrannerList = new GraphQLList(BrannerItem)
-const DataType = new GraphQLObjectType({
-    name: 'DataType',
-    description: 'Data Type',
-    fields: {
-        code: {
-            type: GraphQLString,
-            resolve(root, params, ctx) {
-                console.log('code')
-                console.log( root.code)
-                return root.code
-            }
-        },
-        message: {
-            type: GraphQLString,
-            resolve(root, params, ctx) {
-                return root.message
-            }
-        },
-        list: {
-            type: BrannerList,
-            resolve(root, params, ctx) {
-                //params为参数与
-                console.log(params)
-                // return ItemService(obj['id'])
-                return root.content
-            }
-        }
-    }
-})
-const DataSchema = new GraphQLSchema({
-    query: new GraphQLObjectType({
+interface Res {
+    code: string,
+    message: string,
+    data: Array<object>
+}
+const queryType = new GraphQLObjectType({
         name: "ListQuery",
         description: 'query list',
-        fields: {
+         fields: {
             data: {
-                type: DataType,
+                type: new GraphQLObjectType({
+                    name: 'DataType',
+                    description: 'Data Type',
+                    fields: {
+                        code: {
+                            type: GraphQLString
+                        },
+                        message: {
+                            type: GraphQLString
+                        },
+                        list: {
+                            type:  new GraphQLList(BrannerItem)
+                        }
+                    }
+                }),
                 description: 'item',
-                async resolve(root, params, ctx) {
-                    console.log(root)
-                    console.log(params)
-                    console.log(ctx)
-                    //此处从接口获取BrannerList的内容
-                    const res = await getBrannerList()
-                    console.log(res)
-                    // return ItemService(obj['id'])
-                    return res
+                resolve(root, params, ctx) {
+                    return getBrannerList()
+                        .then((res: Res) => ({
+                            code: res.code,
+                            message: res.message,
+                            list: res.data
+                        }))
                 }
             }
         }
-    })
 })
-export default DataSchema
+export default {
+    list:new GraphQLSchema({
+        query: queryType
+        // mutation: MutationType
+      })
+}

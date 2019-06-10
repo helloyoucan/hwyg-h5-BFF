@@ -1,9 +1,9 @@
 import request from '@/utils/request'
 //请求数据
 
-export function getBrannerList() {
+export function getTradedList() {
     return request({
-        url: '/branners',
+        url: '/order/success/1/10',
         method: 'GET'
     })
 }

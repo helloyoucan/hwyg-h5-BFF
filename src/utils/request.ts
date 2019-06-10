@@ -1,6 +1,6 @@
 const https = require('https');
 const querystring = require('querystring');
-import { PROXY_IP, BASE_URL } from '../utils/index'
+import { PROXY_IP, BASE_URL } from '@/utils/const'
 interface RequestParams {
     method?: string,
     url: string,
@@ -44,11 +44,9 @@ const request: ReauestFunc = function ({ method = 'GET', url, headers, data }: R
                 res.on('end', () => {
                     const json: Data = JSON.parse(body)
                     resolve(() => json)
-                    console.log('响应中已无数据')
                 });
             }
         )
-        // req.write(contents);
         req.end();
     }).then((func:Function) => {
         return func()
