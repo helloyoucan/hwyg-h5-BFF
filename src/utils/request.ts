@@ -17,7 +17,8 @@ interface Data {
 }
 const request: ReauestFunc = function ({ method = 'GET', url, headers, data }: RequestParams): Promise<Function> {
     return new Promise((resolve, reject) => {
-        const contents = querystring.stringify(data)
+        // const contents = querystring.stringify(data)
+        const contents = JSON.stringify(data)
         const options = {
             timeout: 30000,
             hostname: PROXY_IP,
@@ -26,7 +27,7 @@ const request: ReauestFunc = function ({ method = 'GET', url, headers, data }: R
             method,
             headers: {
                 'Content-Type': 'application/json',
-                'Content-Length': contents.length,
+                'Content-Length': contents ? contents.length : 0,
                 ...headers
             }
         }
@@ -47,8 +48,9 @@ const request: ReauestFunc = function ({ method = 'GET', url, headers, data }: R
                 });
             }
         )
+        contents&&req.write(contents);
         req.end();
-    }).then((func:Function) => {
+    }).then((func: Function) => {
         return func()
     })
 

@@ -8,7 +8,7 @@ const bodyParser = require('./bodyparser')
 // import goodsSchema from './goodsSchema'
 // import { getBrannerList } from './service/brannersService'
 import router from './controller/index'
-const PORT = 3000
+const PORT = 9090
 //Parse post content as text(将post内容解析为文本)
 app.use(bodyParser({
     enableTypes: ['json', 'form', 'text']
