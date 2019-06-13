@@ -5,7 +5,8 @@ interface RequestParams {
     method?: string,
     url: string,
     headers?: object,
-    data?: object | number | string
+    data?: object | number | string,
+    params?: object | number | string
 }
 interface ReauestFunc {
     (opt: RequestParams): any;
@@ -15,15 +16,16 @@ interface Data {
     message: string | undefined,
     data: object
 }
-const request: ReauestFunc = function ({ method = 'GET', url, headers, data }: RequestParams): Promise<Function> {
+const request: ReauestFunc = function ({ method = 'GET', url, headers, data ,params}: RequestParams): Promise<Function> {
     return new Promise((resolve, reject) => {
-        // const contents = querystring.stringify(data)
+        const query = querystring.stringify(params)
         const contents = JSON.stringify(data)
+        const path = BASE_URL + url +(params?'?'+query:'')
         const options = {
             timeout: 30000,
             hostname: PROXY_IP,
             port: 443,
-            path: BASE_URL + url,
+            path,
             method,
             headers: {
                 'Content-Type': 'application/json',
