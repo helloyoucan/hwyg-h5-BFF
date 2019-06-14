@@ -19,7 +19,7 @@ var copy = require('copy-to');
  *   - {Object} extendTypes
  */
 
-module.exports = function (opts) {
+module.exports = function (opts: any) {
   opts = opts || {};
   var detectJSON = opts.detectJSON;
   var onerror = opts.onerror;
@@ -64,13 +64,13 @@ module.exports = function (opts) {
   extendType(formTypes, extendTypes.form);
   extendType(textTypes, extendTypes.text);
 
-  return async function bodyParser(ctx, next) {
+  return async function bodyParser(ctx: any, next: any) {
     if (ctx.request.body !== undefined) return await next();
     if (ctx.disableBodyParser) return await next();
     try {
       const res = await parseBody(ctx);
       // ctx.request.body = res//++++++
-      ctx.request.body = typeof res==='object'&&'parsed' in res ? res.parsed : res; //----------
+      ctx.request.body = typeof res === 'object' && 'parsed' in res ? res.parsed : res; //----------
       if (ctx.request.rawBody === undefined) ctx.request.rawBody = res.raw;
     } catch (err) {
       if (onerror) {
@@ -82,7 +82,7 @@ module.exports = function (opts) {
     await next();
   };
 
-  async function parseBody(ctx) {
+  async function parseBody(ctx: any) {
     if (enableJson && ((detectJSON && detectJSON(ctx)) || ctx.request.is(jsonTypes))) {
       return await parse.json(ctx, jsonOpts);
     }
@@ -96,24 +96,24 @@ module.exports = function (opts) {
   }
 };
 
-function formatOptions(opts, type) {
-  var res = {};
+function formatOptions(opts: any, type: any) {
+  var res = { limit: '' };
   copy(opts).to(res);
   res.limit = opts[type + 'Limit'];
   return res;
 }
 
-function extendType(original, extend) {
+function extendType(original: any, extend: any) {
   if (extend) {
     if (!Array.isArray(extend)) {
       extend = [extend];
     }
-    extend.forEach(function (extend) {
+    extend.forEach(function (extend: any) {
       original.push(extend);
     });
   }
 }
 
-function checkEnable(types, type) {
+function checkEnable(types: any, type: any) {
   return types.includes(type);
 }
