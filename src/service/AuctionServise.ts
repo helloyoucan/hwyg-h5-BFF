@@ -32,7 +32,7 @@ interface SceneListParams {
 
 export function getSceneList({ page = 1, size = 10, rang = EnumRang.today }: SceneListParams) {
     return request({
-        url: '/seal/list',
+        url: '/scene/list',
         method: 'get',
         params: {
             page, size, rang

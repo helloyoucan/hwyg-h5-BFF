@@ -7,35 +7,35 @@ export default new GraphQLObjectType({
     fields: {
         addedTime: {
             type: GraphQLInt,
-            description: '',
+            description: '上架时间',
             resolve(root, param, ctx) {
                 return root.addedTime
             }
         },
         amountValve: {
             type: GraphQLInt,
-            description: '',
+            description: '起购量/起供量',
             resolve(root, param, ctx) {
                 return root.amountValve
             }
         },
         applyChangeDtoList: {
             type: GraphQLString,
-            description: '',
+            description: '变更记录',
             resolve(root, param, ctx) {
                 return root.applyChangeDtoList
             }
         },
         applyType: {
             type: GraphQLInt,
-            description: '商品类型',
+            description: '申请单类型 1采购申请 2供应申请',
             resolve(root, param, ctx) {
                 return root.applyType
             }
         },
         approvalName: {
             type: GraphQLInt,
-            description: '',
+            description: '审批人名称',
             resolve(root, param, ctx) {
                 return root.approvalName
             }
@@ -49,14 +49,14 @@ export default new GraphQLObjectType({
         },
         categoryName: {
             type: GraphQLString,
-            description: '分类名称',
+            description: '类别名称',
             resolve(root, param, ctx) {
                 return root.categoryName
             }
         },
         code: {
             type: GraphQLString,
-            description: '',
+            description: '商品申请编码',
             resolve(root, param, ctx) {
                 return root.code
             }
@@ -119,14 +119,14 @@ export default new GraphQLObjectType({
         },
         detail: {
             type: GraphQLString,
-            description: '',
+            description: '商品详情',
             resolve(root, param, ctx) {
                 return root.detail
             }
         },
         detailedAddress: {
             type: GraphQLString,
-            description: '',
+            description: '详细地址',
             resolve(root, param, ctx) {
                 return root.detailedAddress
             }
@@ -168,7 +168,7 @@ export default new GraphQLObjectType({
         },
         images: {
             type: GraphQLString,
-            description: '',
+            description: '产品上传图片,逗号分割的字符串',
             resolve(root, param, ctx) {
                 return root.images
             }
@@ -182,28 +182,28 @@ export default new GraphQLObjectType({
         },
         location: {
             type: GraphQLString,
-            description: '商家地址',
+            description: '我的位置/仓位位置',
             resolve(root, param, ctx) {
                 return root.location
             }
         },
         logisticsType: {
             type: GraphQLString,
-            description: '物流方式',
+            description: '物流方式 1:自提 2:物流运输',
             resolve(root, param, ctx) {
                 return root.logisticsType
             }
         },
         outTime: {
             type: GraphQLString,
-            description: '',
+            description: '下架时间',
             resolve(root, param, ctx) {
                 return root.outTime
             }
         },
         packSpec: {
             type: GraphQLString,
-            description: '包装规格',
+            description: '',
             resolve(root, param, ctx) {
                 return root.packSpec
             }
@@ -217,7 +217,7 @@ export default new GraphQLObjectType({
         },
         pickAddress: {
             type: GraphQLString,
-            description: '字体地址',
+            description: '取货地址',
             resolve(root, param, ctx) {
                 return root.pickAddress
             }
@@ -252,28 +252,28 @@ export default new GraphQLObjectType({
         },
         rejectType: {
             type: GraphQLString,
-            description: '',
+            description: '拒绝类型',
             resolve(root, param, ctx) {
                 return root.rejectType
             }
         },
         remark: {
             type: GraphQLString,
-            description: '备注',
+            description: '',
             resolve(root, param, ctx) {
                 return root.remark
             }
         },
         shipName: {
             type: GraphQLString,
-            description: '渔船名称',
+            description: '',
             resolve(root, param, ctx) {
                 return root.shipName
             }
         },
         shipNameNo: {
             type: GraphQLString,
-            description: '渔船号码',
+            description: '',
             resolve(root, param, ctx) {
                 return root.shipNameNo
             }
@@ -294,7 +294,7 @@ export default new GraphQLObjectType({
         },
         specification: {
             type: GraphQLString,
-            description: '',
+            description: '商品属性值(规格)',
             resolve(root, param, ctx) {
                 return root.specification
             }
@@ -308,14 +308,14 @@ export default new GraphQLObjectType({
         },
         status: {
             type: GraphQLInt,
-            description: '状态',
+            description: '状态 1-已上架，2-待审核，3-审核未通过，4-已下架，5-草稿',
             resolve(root, param, ctx) {
                 return root.status
             }
         },
         storage: {
             type: GraphQLString,
-            description: '',
+            description: '存储类型',
             resolve(root, param, ctx) {
                 return root.storage
             }

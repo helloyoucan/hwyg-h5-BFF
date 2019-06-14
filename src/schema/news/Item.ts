@@ -7,28 +7,28 @@ export default new GraphQLObjectType({
     fields: {
         checkNumber: {
             type: GraphQLInt,
-            description: '',
+            description: '浏览次数',
             resolve(root, param, ctx) {
                 return root.checkNumber
             }
         },
         content: {
             type: GraphQLString,
-            description: '',
+            description: '资讯内容',
             resolve(root, param, ctx) {
                 return root.content
             }
         },
         createTime: {
             type: GraphQLInt,
-            description: '',
+            description: '创建时间时间戳',
             resolve(root, param, ctx) {
                 return root.createTime
             }
         },
         creator: {
             type: GraphQLString,
-            description: '',
+            description: '创建人',
             resolve(root, param, ctx) {
                 return root.creator
             }
@@ -49,7 +49,7 @@ export default new GraphQLObjectType({
         },
         isEffect : {
             type: GraphQLInt,
-            description: '',
+            description: '是否发布 1-发布 0-待发布',
             resolve(root, param, ctx) {
                 return root.isEffect
             }
@@ -84,42 +84,42 @@ export default new GraphQLObjectType({
         },
         prevId: {
             type: GraphQLString,
-            description: '',
+            description: '上一篇的id',
             resolve(root, param, ctx) {
                 return root.prevId
             }
         },
         prevTitle: {
             type: GraphQLString,
-            description: '',
+            description: '上一篇的标题',
             resolve(root, param, ctx) {
                 return root.prevTitle
             }
         },
         publishTime: {
             type: GraphQLInt,
-            description: '',
+            description: '下一篇的id',
             resolve(root, param, ctx) {
                 return root.publishTime
             }
         },
         publisher: {
             type: GraphQLString,
-            description: '',
+            description: '下一篇的标题',
             resolve(root, param, ctx) {
                 return root.publisher
             }
         },
         recentEditTime: {
             type: GraphQLInt,
-            description: '',
+            description: '最近编辑时间时间戳',
             resolve(root, param, ctx) {
                 return root.recentEditTime
             }
         },
         title: {
             type: GraphQLString,
-            description: '',
+            description: '资讯标题',
             resolve(root, param, ctx) {
                 return root.title
             }
