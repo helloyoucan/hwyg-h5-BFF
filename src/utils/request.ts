@@ -1,6 +1,6 @@
-const https = require('https');
+const https = require('http');
 const querystring = require('querystring');
-import { PROXY_IP, BASE_URL } from '@/utils/const'
+import { PROXY_IP,PROXY_PORT, BASE_URL } from '@/utils/const'
 interface RequestParams {
     method?: string,
     url: string,
@@ -24,7 +24,7 @@ const request: ReauestFunc = function ({ method = 'GET', url, headers, data ,par
         const options = {
             timeout: 30000,
             hostname: PROXY_IP,
-            port: 443,
+            port: PROXY_PORT,
             path,
             method,
             headers: {

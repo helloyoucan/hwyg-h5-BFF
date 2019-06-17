@@ -1,12 +1,16 @@
 import {
-    GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLInt, GraphQLList,
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLFloat,
+    GraphQLInt,
+    GraphQLList
 } from 'graphql'
 export default new GraphQLObjectType({
     name: 'item',
     description: 'goods item',
     fields: {
         addedTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '上架时间',
             resolve(root, param, ctx) {
                 return root.addedTime
@@ -62,7 +66,7 @@ export default new GraphQLObjectType({
             }
         },
         createTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '创建时间',
             resolve(root, param, ctx) {
                 return root.createTime
@@ -97,14 +101,14 @@ export default new GraphQLObjectType({
             }
         },
         deliveryDateTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '交割时间的时间戳',
             resolve(root, param, ctx) {
                 return root.deliveryDateTime
             }
         },
         deliveryTime: {
-            type: GraphQLString,
+            type: GraphQLFloat,
             description: '交割时间（时分秒,hh-mm-ss）',
             resolve(root, param, ctx) {
                 return root.deliveryTime
@@ -132,7 +136,7 @@ export default new GraphQLObjectType({
             }
         },
         editTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '修改时间',
             resolve(root, param, ctx) {
                 return root.editTime
@@ -167,10 +171,10 @@ export default new GraphQLObjectType({
             }
         },
         images: {
-            type: GraphQLString,
+            type: new GraphQLList(GraphQLString),
             description: '产品上传图片,逗号分割的字符串',
             resolve(root, param, ctx) {
-                return root.images
+                return root.images ? root.images.split(',') : []
             }
         },
         isDelete: {
@@ -195,7 +199,7 @@ export default new GraphQLObjectType({
             }
         },
         outTime: {
-            type: GraphQLString,
+            type: GraphQLFloat,
             description: '下架时间',
             resolve(root, param, ctx) {
                 return root.outTime

@@ -1,5 +1,10 @@
 import {
-    GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLInt, GraphQLList,
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLSchema,
+    GraphQLInt,
+    GraphQLList,
+    GraphQLFloat
 } from 'graphql'
 import { getBrannerList } from '@/service/BrannersService'
 const BrannerItem = new GraphQLObjectType({
@@ -20,21 +25,21 @@ const BrannerItem = new GraphQLObjectType({
             }
         },
         effectTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '广告开始作用时间',
             resolve(root, param, ctx) {
                 return root.effectTime
             }
         },
         expireTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '广告结束作用时间',
             resolve(root, param, ctx) {
                 return root.expireTime
             }
         },
         createTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '创建时间',
             resolve(root, param, ctx) {
                 return root.createTime
@@ -83,40 +88,40 @@ interface Res {
     data: Array<object>
 }
 const queryType = new GraphQLObjectType({
-        name: "ListQuery",
-        description: 'query list',
-         fields: {
-            _schema: {
-                type: new GraphQLObjectType({
-                    name: 'DataType',
-                    description: 'Data Type',
-                    fields: {
-                        code: {
-                            type: GraphQLString
-                        },
-                        message: {
-                            type: GraphQLString
-                        },
-                        list: {
-                            type:  new GraphQLList(BrannerItem)
-                        }
+    name: "ListQuery",
+    description: 'query list',
+    fields: {
+        _schema: {
+            type: new GraphQLObjectType({
+                name: 'DataType',
+                description: 'Data Type',
+                fields: {
+                    code: {
+                        type: GraphQLString
+                    },
+                    message: {
+                        type: GraphQLString
+                    },
+                    list: {
+                        type: new GraphQLList(BrannerItem)
                     }
-                }),
-                description: 'item',
-                resolve(root, params, ctx) {
-                    return getBrannerList()
-                        .then((res: Res) => ({
-                            code: res.code,
-                            message: res.message,
-                            list: res.data
-                        }))
                 }
+            }),
+            description: 'item',
+            resolve(root, params, ctx) {
+                return getBrannerList()
+                    .then((res: Res) => ({
+                        code: res.code,
+                        message: res.message,
+                        list: res.data
+                    }))
             }
         }
+    }
 })
 export default {
-    list:new GraphQLSchema({
+    list: new GraphQLSchema({
         query: queryType
         // mutation: MutationType
-      })
+    })
 }

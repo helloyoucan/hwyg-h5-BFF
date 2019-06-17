@@ -29,6 +29,9 @@ const queryType = new GraphQLObjectType({
                 },
                 size: {
                     type: GraphQLInt
+                },
+                rang:{
+                    type:GraphQLString
                 }
             },
             resolve(root, params, ctx) {
@@ -48,8 +51,6 @@ const queryType = new GraphQLObjectType({
         }
     }
 })
-export default {
-    list: new GraphQLSchema({
-        query: queryType
-    })
-}
+export default new GraphQLSchema({
+    query: queryType
+})

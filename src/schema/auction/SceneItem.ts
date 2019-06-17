@@ -1,12 +1,15 @@
 import {
-    GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLInt, GraphQLList,
+    GraphQLObjectType, 
+    GraphQLString,
+    GraphQLInt,
+    GraphQLFloat,
 } from 'graphql'
 export default new GraphQLObjectType({
     name: 'item',
-    description: 'auction item',
+    description: 'scene item',
     fields: {
         beginTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '场次开始时间戳',
             resolve(root, param, ctx) {
                 return root.beginTime
@@ -27,7 +30,7 @@ export default new GraphQLObjectType({
             }
         },
         chargerName: {
-            type: GraphQLInt,
+            type: GraphQLString,
             description: '负责人姓名',
             resolve(root, param, ctx) {
                 return root.chargerName
@@ -48,21 +51,21 @@ export default new GraphQLObjectType({
             }
         },
         coverUrls: {
-            type: GraphQLInt,
+            type: GraphQLString,
             description: '场次封面图片地址，多个地址之间使用逗号“,”隔开',
             resolve(root, param, ctx) {
                 return root.coverUrls
             }
         },
         createTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '创建时间',
             resolve(root, param, ctx) {
                 return root.createTime
             }
         },
         creator: {
-            type: GraphQLInt,
+            type: GraphQLString,
             description: '创建人',
             resolve(root, param, ctx) {
                 return root.creator
@@ -76,7 +79,7 @@ export default new GraphQLObjectType({
             }
         },
         endTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '场次结束时间戳',
             resolve(root, param, ctx) {
                 return root.endTime
@@ -90,7 +93,7 @@ export default new GraphQLObjectType({
             }
         },
         lastModifyBy: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '更新时间',
             resolve(root, param, ctx) {
                 return root.lastModifyBy
@@ -104,7 +107,7 @@ export default new GraphQLObjectType({
             }
         },
         name: {
-            type: GraphQLInt,
+            type: GraphQLString,
             description: '场次名称',
             resolve(root, param, ctx) {
                 return root.name
@@ -119,7 +122,7 @@ export default new GraphQLObjectType({
         },
         orderStatus: {
             type: GraphQLInt,
-            description: '成交次数',
+            description: '',
             resolve(root, param, ctx) {
                 return root.orderStatus
             }
@@ -132,14 +135,14 @@ export default new GraphQLObjectType({
             }
         },
         preTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '',
             resolve(root, param, ctx) {
                 return root.preTime
             }
         },
         publishTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '',
             resolve(root, param, ctx) {
                 return root.publishTime
@@ -153,7 +156,7 @@ export default new GraphQLObjectType({
             }
         },
         sponsor : {
-            type: GraphQLInt,
+            type: GraphQLString,
             description: '',
             resolve(root, param, ctx) {
                 return root.sponsor

@@ -1,2 +1,5 @@
-export const PROXY_IP:string = 'wx.hongwanyg.com'
+// export const PROXY_IP:string = 'wx.hongwanyg.com'
+export const PROXY_IP:string = '192.168.0.171'
+// export const PROXY_PORT:string = '443'
+export const PROXY_PORT:string = '8196'
 export const BASE_URL:string = '/rest'

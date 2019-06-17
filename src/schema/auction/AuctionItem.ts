@@ -1,33 +1,36 @@
 import {
-    GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLInt, GraphQLList,
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLInt,
+    GraphQLFloat
 } from 'graphql'
 const auctionExtendType = new GraphQLObjectType({
     name: 'auctionExtend',
     description: 'auctionExtend',
     fields: {
         auctionId: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '',
             resolve(root, param, ctx) {
                 return root.auctionId
             }
         },
         clientName: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '',
             resolve(root, param, ctx) {
                 return root.clientName
             }
         },
         createTime: {
-            type: GraphQLInt, 
+            type: GraphQLInt,
             description: '',
             resolve(root, param, ctx) {
                 return root.createTime
             }
         },
         publicType: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '',
             resolve(root, param, ctx) {
                 return root.publicType
@@ -40,175 +43,175 @@ const corporeType = new GraphQLObjectType({
     description: 'corpore',
     fields: {
         catchDate: {
-            type: GraphQLInt, 
+            type: GraphQLInt,
             description: '捕捞日期',
             resolve(root, param, ctx) {
                 return root.catchDate
             }
         },
         categoryId: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '分类Id',
             resolve(root, param, ctx) {
                 return root.categoryId
             }
         },
         corporeExtend: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '',
             resolve(root, param, ctx) {
                 return root.corporeExtend
             }
         },
         corporeSerialNo: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '',
             resolve(root, param, ctx) {
                 return root.corporeSerialNo
             }
         },
         createTime: {
-            type: GraphQLString, 
+            type: GraphQLFloat,
             description: '创建时间',
             resolve(root, param, ctx) {
                 return root.createTime
             }
         },
         creator: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '创建人',
             resolve(root, param, ctx) {
                 return root.creator
             }
         },
         description: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '描述',
             resolve(root, param, ctx) {
                 return root.description
             }
         },
         growType: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '生长方式',
             resolve(root, param, ctx) {
                 return root.growType
             }
         },
         id: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '标的数据id',
             resolve(root, param, ctx) {
                 return root.id
             }
         },
         imageUrls: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '图片集合',
             resolve(root, param, ctx) {
                 return root.imageUrls
             }
         },
         lastModifyBy: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '编辑人',
             resolve(root, param, ctx) {
                 return root.lastModifyBy
             }
         },
         lastModifyTime: {
-            type: GraphQLString, 
+            type: GraphQLFloat,
             description: '编辑时间',
             resolve(root, param, ctx) {
                 return root.lastModifyTime
             }
         },
         measureUnit: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '单位',
             resolve(root, param, ctx) {
                 return root.measureUnit
             }
         },
         name: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '标的名称',
             resolve(root, param, ctx) {
                 return root.name
             }
         },
         packSpecification: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '包装规格',
             resolve(root, param, ctx) {
                 return root.packSpecification
             }
         },
         productId: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '产品ID',
             resolve(root, param, ctx) {
                 return root.productId
             }
         },
         quantity: {
-            type: GraphQLInt, 
+            type: GraphQLInt,
             description: '数量',
             resolve(root, param, ctx) {
                 return root.quantity
             }
         },
         shipName: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '渔船号',
             resolve(root, param, ctx) {
                 return root.shipName
             }
         },
         shipNameNo: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '渔船号溯源号码',
             resolve(root, param, ctx) {
                 return root.shipNameNo
             }
         },
         shipPathEnd: {
-            type: GraphQLString, 
+            type: GraphQLFloat,
             description: '渔船轨迹开始时间',
             resolve(root, param, ctx) {
                 return root.shipPathEnd
             }
         },
         shipPathStart: {
-            type: GraphQLString, 
+            type: GraphQLFloat,
             description: '渔船轨迹结束时间',
             resolve(root, param, ctx) {
                 return root.shipPathStart
             }
         },
         shipinfo: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '渔船信息汇总',
             resolve(root, param, ctx) {
                 return root.shipinfo
             }
         },
         specification: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '规格',
             resolve(root, param, ctx) {
                 return root.specification
             }
         },
         storeType: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '存储类别',
             resolve(root, param, ctx) {
                 return root.storeType
             }
         },
         videoUrl: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '视频url',
             resolve(root, param, ctx) {
                 return root.videoUrl
@@ -221,28 +224,28 @@ const summaryType = new GraphQLObjectType({
     description: 'summary',
     fields: {
         auctionId: {
-            type: GraphQLString, 
+            type: GraphQLString,
             description: '拍卖Id',
             resolve(root, param, ctx) {
                 return root.auctionId
             }
         },
         bidNumber: {
-            type: GraphQLInt, 
+            type: GraphQLInt,
             description: '出价次数',
             resolve(root, param, ctx) {
                 return root.bidNumber
             }
         },
         currentPrice: {
-            type: GraphQLInt, 
+            type: GraphQLInt,
             description: '最新价格',
             resolve(root, param, ctx) {
                 return root.currentPrice
             }
         },
         onlookNumber: {
-            type: GraphQLInt, 
+            type: GraphQLInt,
             description: '围观次数',
             resolve(root, param, ctx) {
                 return root.onlookNumber
@@ -283,7 +286,7 @@ export default new GraphQLObjectType({
             }
         },
         auditTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '审核时间',
             resolve(root, param, ctx) {
                 return root.addedTime
@@ -311,7 +314,7 @@ export default new GraphQLObjectType({
             }
         },
         beginTime: {
-            type: GraphQLString,
+            type: GraphQLFloat,
             description: '开始时间',
             resolve(root, param, ctx) {
                 return root.beginTime
@@ -325,7 +328,7 @@ export default new GraphQLObjectType({
             }
         },
         bidType: {
-            type: GraphQLString,
+            type: GraphQLInt,
             description: '拍卖类型',
             resolve(root, param, ctx) {
                 return root.bidType
@@ -360,7 +363,7 @@ export default new GraphQLObjectType({
             }
         },
         createTime: {
-            type: GraphQLString,
+            type: GraphQLFloat,
             description: '创建时间',
             resolve(root, param, ctx) {
                 return root.createTime
@@ -388,7 +391,7 @@ export default new GraphQLObjectType({
             }
         },
         dealTime: {
-            type: GraphQLString,
+            type: GraphQLFloat,
             description: '成交时间',
             resolve(root, param, ctx) {
                 return root.dealTime
@@ -416,14 +419,14 @@ export default new GraphQLObjectType({
             }
         },
         deliveryTime: {
-            type: GraphQLString,
+            type: GraphQLFloat,
             description: '可交割时间',
             resolve(root, param, ctx) {
                 return root.deliveryTime
             }
         },
         endTime: {
-            type: GraphQLString,
+            type: GraphQLFloat,
             description: '结束时间',
             resolve(root, param, ctx) {
                 return root.endTime
@@ -451,7 +454,7 @@ export default new GraphQLObjectType({
             }
         },
         lastModifyTime: {
-            type: GraphQLString,
+            type: GraphQLFloat,
             description: '编辑时间',
             resolve(root, param, ctx) {
                 return root.lastModifyTime
@@ -465,21 +468,21 @@ export default new GraphQLObjectType({
             }
         },
         orderTime: {
-            type: GraphQLString,
+            type: GraphQLFloat,
             description: '预约时间',
             resolve(root, param, ctx) {
                 return root.orderTime
             }
         },
         preBeginTime: {
-            type: GraphQLString,
+            type: GraphQLFloat,
             description: '场次预约 开始时间',
             resolve(root, param, ctx) {
                 return root.preBeginTime
             }
         },
         preEndTime: {
-            type: GraphQLString,
+            type: GraphQLFloat,
             description: '场次预约 结束时间',
             resolve(root, param, ctx) {
                 return root.preEndTime
@@ -528,7 +531,7 @@ export default new GraphQLObjectType({
             }
         },
         status: {
-            type: GraphQLString,
+            type: GraphQLInt,
             description: '标的状态',
             resolve(root, param, ctx) {
                 return root.status
@@ -542,7 +545,7 @@ export default new GraphQLObjectType({
             }
         },
         timeLimitBid: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '时间限制',
             resolve(root, param, ctx) {
                 return root.timeLimitBid
