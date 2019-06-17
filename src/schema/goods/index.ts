@@ -20,7 +20,7 @@ const queryType = new GraphQLObjectType({
     name: "ListQuery",
     description: 'query list',
     fields: {
-        data: {
+        _schema: {
             type: getGraphQLObjectTypePageList(Item),
             description: 'data',
             args: {

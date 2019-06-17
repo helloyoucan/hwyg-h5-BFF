@@ -86,7 +86,7 @@ const queryType = new GraphQLObjectType({
         name: "ListQuery",
         description: 'query list',
          fields: {
-            data: {
+            _schema: {
                 type: new GraphQLObjectType({
                     name: 'DataType',
                     description: 'Data Type',
