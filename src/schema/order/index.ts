@@ -1,5 +1,9 @@
 import {
-    GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLInt, GraphQLList,
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLSchema,
+    GraphQLInt,
+    GraphQLFloat,
 } from 'graphql'
 import { getTradedList } from '@/service/OrderService'
 import { getGraphQLObjectTypePageList } from '@/utils/index'
@@ -42,7 +46,7 @@ const Item = new GraphQLObjectType({
             }
         },
         time: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '成交时间',
             resolve(root, param, ctx) {
                 return root.time
@@ -69,8 +73,16 @@ const queryType = new GraphQLObjectType({
         _schema: {
             type: getGraphQLObjectTypePageList(Item),
             description: 'data',
+            args: {
+                page: {
+                    type: GraphQLInt
+                },
+                size: {
+                    type: GraphQLInt
+                }
+            },
             resolve(root, params, ctx) {
-                return getTradedList()
+                return getTradedList(params)
                     .then((res: Res) => {
                         const { code, message, data: { content, page, totalElements, totalPages, size, numberOfElements } } = res
                         return {
