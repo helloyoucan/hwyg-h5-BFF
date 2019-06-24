@@ -31,6 +31,9 @@ export function getGraphQLObjectTypePageList(DataType: GraphQLObjectType) {
                         page: {
                             type: GraphQLInt
                         },
+                        size: {
+                            type: GraphQLInt
+                        },
                         totalElements: {
                             type: GraphQLInt
                         },
@@ -41,7 +44,10 @@ export function getGraphQLObjectTypePageList(DataType: GraphQLObjectType) {
                             type: GraphQLInt
                         }
                     }
-                })
+                }),
+                resolve(root, params, ctx) {
+                    return root.pager
+                }
             },
             code: {
                 type: GraphQLString
