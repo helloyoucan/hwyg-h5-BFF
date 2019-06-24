@@ -1,4 +1,4 @@
-const https = require('http');
+const https = require('https');
 const querystring = require('querystring');
 import { PROXY_IP,PROXY_PORT, BASE_URL } from '@/utils/const'
 interface RequestParams {
