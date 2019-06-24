@@ -1,7 +1,7 @@
 import {
-    GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLInt, GraphQLList,
+    GraphQLObjectType, GraphQLSchema, GraphQLInt, GraphQLString
 } from 'graphql'
-import { getSceneList } from '@/service/AuctionServise'
+import { getNewsList } from '@/service/NewsServise'
 import { getGraphQLObjectTypePageList } from '@/utils/index'
 import Item from './Item'
 interface Res {
@@ -29,10 +29,13 @@ const queryType = new GraphQLObjectType({
                 },
                 size: {
                     type: GraphQLInt
+                },
+                keyWord: {
+                    type: GraphQLString
                 }
             },
             resolve(root, params, ctx) {
-                return getSceneList(params)
+                return getNewsList(params)
                     .then((res: Res) => {
                         const { code, message, data: { content, page, totalElements, totalPages, size, numberOfElements } } = res
                         return {

@@ -1,5 +1,5 @@
 import {
-    GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLInt, GraphQLList,
+    GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLFloat,
 } from 'graphql'
 export default new GraphQLObjectType({
     name: 'item',
@@ -20,7 +20,7 @@ export default new GraphQLObjectType({
             }
         },
         createTime: {
-            type: GraphQLInt,
+            type: GraphQLFloat,
             description: '创建时间时间戳',
             resolve(root, param, ctx) {
                 return root.createTime
@@ -110,7 +110,7 @@ export default new GraphQLObjectType({
                 return root.publisher
             }
         },
-        recentEditTime: {
+        GraphQLFloat: {
             type: GraphQLInt,
             description: '最近编辑时间时间戳',
             resolve(root, param, ctx) {
