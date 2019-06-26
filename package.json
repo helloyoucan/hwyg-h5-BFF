@@ -4,13 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:tsc": "tsc",
-    "dev:tsc": "nodemon --watch src -e ts --exec ts-node -r tsconfig-paths/register ./src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:win": "ts-node ./scripts/start-dev.ts",
-    "dev": "rm -rf ./dist && ts-node ./scripts/start-dev.ts",
-    "build:win": "rd /s/q dist && ts-node ./scripts/build.ts",
-    "build": "rm -rf ./dist && ts-node ./scripts/build.ts"
+    "build": "tsc",
+    "dev": "nodemon --watch src -e ts --exec ts-node -r tsconfig-paths/register ./src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -29,23 +25,14 @@
     "copy-to": "^2.0.1",
     "graphql": "^14.3.1",
     "koa": "^2.7.0",
-    "koa-router": "^7.4.0",
-    "webpack": "^4.5.0",
-    "webpack-cli": "^2.0.14"
+    "koa-router": "^7.4.0"
   },
   "devDependencies": {
     "@types/koa": "^2.0.48",
     "@types/koa-router": "^7.0.40",
-    "@types/node": "^7.0.60",
-    "@types/webpack": "^4.1.3",
-    "@types/webpack-env": "^1.13.9",
-    "@types/webpack-node-externals": "^1.6.3",
     "nodemon": "^1.19.1",
-    "start-server-webpack-plugin": "^2.2.5",
-    "ts-loader": "^4.2.0",
     "ts-node": "^8.2.0",
     "tsconfig-paths": "^3.8.0",
-    "typescript": "^3.4.5",
-    "webpack-node-externals": "^1.7.2"
+    "typescript": "^3.4.5"
   }
 }

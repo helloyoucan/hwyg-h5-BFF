@@ -1,21 +1,17 @@
-import * as http from 'http';
-import app from './app';
+import { graphql } from "graphql";
+const Koa = require('koa');
+const Router = require('koa-router');
+const app = new Koa();
+// const router = new Router();
+const bodyParser = require('./bodyparser')
+import router from './controller/index'
 const PORT = 9090
-// app.callback() 会返回一个能够通过http.createServer创建server的函数，类似express和connect。
-let currentApp = app.callback();
-// 创建server
-const server = http.createServer(currentApp);
-// server.listen(3000);
-server.listen(PORT, () => {
+//Parse post content as text(将post内容解析为文本)
+app.use(bodyParser({
+    enableTypes: ['json', 'form', 'text']
+}));
+app.use(router.routes());
+
+app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-// 热加载
-if (module.hot) {
-    // 监听./app.ts
-    module.hot.accept('./app.ts', () => {
-        // 如果有改动，就使用新的app来处理请求
-        server.removeListener('request', currentApp);
-        currentApp = app.callback();
-        server.on('request', currentApp);
-    });
-}
