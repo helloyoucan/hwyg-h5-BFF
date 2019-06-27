@@ -1,6 +1,7 @@
 import * as http from 'http';
 import app from './app';
 const PORT = 9090
+console.log('here')
 // app.callback() 会返回一个能够通过http.createServer创建server的函数，类似express和connect。
 let currentApp = app.callback();
 // 创建server
