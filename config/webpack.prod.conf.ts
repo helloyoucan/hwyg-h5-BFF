@@ -4,7 +4,7 @@ import * as webpack from 'webpack';
 const config: webpack.Configuration = {
     mode: 'production',
     entry: [
-        path.resolve(__dirname, '../server/server.ts')
+        path.resolve(__dirname, '../src/server.ts')
     ],
     output: {
         path: path.resolve(__dirname, '../dist'),

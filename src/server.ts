@@ -5,10 +5,8 @@ const PORT = 9090
 let currentApp = app.callback();
 // 创建server
 const server = http.createServer(currentApp);
-// server.listen(3000);
-server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+server.listen(PORT);
+console.log(`Server running on port ${PORT}`);
 // 热加载
 if (module.hot) {
     // 监听./app.ts

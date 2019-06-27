@@ -1,5 +1,6 @@
 import * as path from 'path';
-import * as StartServerPlugin from "start-server-webpack-plugin";
+const StartServerPlugin = require("start-server-webpack-plugin")
+// import  StartServerPlugin  from "start-server-webpack-plugin";
 import * as webpack from 'webpack';
 import * as nodeExternals from 'webpack-node-externals';
 import {Configuration, ExternalsElement} from 'webpack';
@@ -7,7 +8,7 @@ import {Configuration, ExternalsElement} from 'webpack';
 class WebpackConfig implements Configuration {
     target: Configuration['target'] = "node";
     mode: Configuration['mode'] = 'production';
-    entry = [path.resolve(__dirname, '../server/server.ts')];
+    entry = [path.resolve(__dirname, '../src/server.ts')];
     output = {
         path: path.resolve(__dirname, '../dist'),
         filename: "server.js"

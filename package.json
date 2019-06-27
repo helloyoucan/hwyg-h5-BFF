@@ -7,7 +7,7 @@
     "build:tsc": "tsc",
     "dev:tsc": "nodemon --watch src -e ts --exec ts-node -r tsconfig-paths/register ./src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:win": "ts-node ./scripts/start-dev.ts",
+    "dev:win": "rd /s/q dist && ts-node ./scripts/start-dev.ts",
     "dev": "rm -rf ./dist && ts-node ./scripts/start-dev.ts",
     "build:win": "rd /s/q dist && ts-node ./scripts/build.ts",
     "build": "rm -rf ./dist && ts-node ./scripts/build.ts"
@@ -23,8 +23,6 @@
   },
   "homepage": "https://github.com/helloyoucan/hwyg-h5-BFF#readme",
   "dependencies": {
-    "@types/graphql": "^14.2.0",
-    "apollo-server-koa": "^2.5.0",
     "co-body": "^6.0.0",
     "copy-to": "^2.0.1",
     "graphql": "^14.3.1",
@@ -34,6 +32,7 @@
     "webpack-cli": "^2.0.14"
   },
   "devDependencies": {
+    "@types/graphql": "^14.2.0",
     "@types/koa": "^2.0.48",
     "@types/koa-router": "^7.0.40",
     "@types/node": "^7.0.60",
