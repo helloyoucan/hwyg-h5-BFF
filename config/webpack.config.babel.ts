@@ -33,7 +33,7 @@ module.exports = {
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
     extensions: [".ts"],
-    alias:{
+    alias: {
       '@': path.resolve(__dirname, '../src')
     }
   },
@@ -61,8 +61,11 @@ module.exports = {
       }
     ]
   },
-  plugins:[
-    // new webpack.HotModuleReplacementPlugin()
+  plugins: [
+    // new webpack.HotModuleReplacementPlugin(),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'common' // 指定公共 bundle 的名称。
+    // })
   ]
 };
 // export default config;
