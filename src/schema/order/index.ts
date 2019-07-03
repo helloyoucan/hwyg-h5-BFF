@@ -5,8 +5,8 @@ import {
     GraphQLInt,
     GraphQLFloat,
 } from 'graphql'
-import { getTradedList } from '@/service/OrderService'
-import { getGraphQLObjectTypePageList } from '@/utils/index'
+import { getTradedList } from '../../service/OrderService'
+import { getGraphQLObjectTypePageList } from '../../utils/index'
 const Item = new GraphQLObjectType({
     name: 'item',
     fields: {

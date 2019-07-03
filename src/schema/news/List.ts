@@ -1,8 +1,8 @@
 import {
     GraphQLObjectType, GraphQLSchema, GraphQLInt, GraphQLString
 } from 'graphql'
-import { getNewsList } from '@/service/NewsServise'
-import { getGraphQLObjectTypePageList } from '@/utils/index'
+import { getNewsList } from '../../service/NewsServise'
+import { getGraphQLObjectTypePageList } from '../../utils/index'
 import Item from './Item'
 interface Res {
     code: string,

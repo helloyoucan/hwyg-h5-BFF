@@ -1,8 +1,8 @@
 import {
     GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLInt, GraphQLList,
 } from 'graphql'
-import { getSealList } from '@/service/AuctionServise'
-import { getGraphQLObjectTypePageList } from '@/utils/index'
+import { getSealList } from '../../service/AuctionServise'
+import { getGraphQLObjectTypePageList } from '../../utils/index'
 import Item from './AuctionItem'
 interface Res {
     code: string,

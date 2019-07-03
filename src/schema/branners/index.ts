@@ -6,7 +6,7 @@ import {
     GraphQLList,
     GraphQLFloat
 } from 'graphql'
-import { getBrannerList } from '@/service/BrannersService'
+import { getBrannerList } from '../../service/BrannersService'
 const BrannerItem = new GraphQLObjectType({
     name: 'item',
     fields: {

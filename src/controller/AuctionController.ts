@@ -1,6 +1,6 @@
 const Router = require('koa-router')
 const router = new Router()
-import Schema from '@/schema/auction/index'
+import Schema from '../schema/auction/index'
 import { graphql } from 'graphql';
 const ROOT_PATH = 'auction'
 

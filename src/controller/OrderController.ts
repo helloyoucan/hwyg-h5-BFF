@@ -1,6 +1,6 @@
 const Router = require('koa-router')
 const router = new Router()
-import Schema from '@/schema/order'
+import Schema from '../schema/order'
 import { graphql } from 'graphql';
 
 

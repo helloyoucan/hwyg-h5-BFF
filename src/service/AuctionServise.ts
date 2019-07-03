@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import request from '../utils/request'
 interface ListParams {
     page?: number,//页码
     size?: number//每页几条
