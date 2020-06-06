@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/helloyoucan/hwyg-h5-BFF#readme",
   "dependencies": {
-    "apollo-server-koa": "^2.5.0",
+    "apollo-server-koa": "^2.14.2",
     "co-body": "^6.0.0",
     "copy-to": "^2.0.1",
     "graphql": "^14.3.1",
